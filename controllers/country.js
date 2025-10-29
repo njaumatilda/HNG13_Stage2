@@ -121,34 +121,6 @@ const cacheCountryAndCurrencyData = async (req, res) => {
 
     const exRateData = await exRateResObject.json()
 
-    // Validate required fields
-    // const validateCountry = (country) => {
-    //   const errors = {}
-    //   if (!country.name) errors.name = "is required"
-    //   if (!country.population) errors.population = "is required"
-    //   if (!country.currencies?.[0]?.code) errors.currency_code = "is required"
-
-    //   //If there are any errors, return the errors object. If no errors, return null.
-    //   // Object.keys(errors).length ? errors : null
-    //   if (Object.keys(errors).length > 0) {
-    //     return errors
-    //   } else {
-    //     return null
-    //   }
-    // }
-
-    // TODO: With this check, no data ever get added to the DB because code stops on
-    // encountering the first country with the validation error.
-    // for (const country of countryData) {
-    //   const checkForErrors = validateCountry(country)
-    //   if (checkForErrors) {
-    //     return res.status(400).json({
-    //       error: "Validation failed",
-    //       details: checkForErrors,
-    //     })
-    //   }
-    // }
-
     const countryDetails = countryData.map((country) => {
       const name = country.name
       const capital = country.capital || null
